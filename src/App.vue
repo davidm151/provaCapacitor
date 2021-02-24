@@ -69,7 +69,7 @@ export default defineComponent({
       },
       {
         title: 'Vibrador',
-        url: '/vibrator',
+        url: '/vibrador',
         iosIcon: heartOutline,
         mdIcon: heartSharp
       },
