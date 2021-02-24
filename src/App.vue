@@ -56,38 +56,38 @@ export default defineComponent({
     const selectedIndex = ref(0);
     const appPages = [
       {
-        title: 'Inbox',
-        url: '/folder/Inbox',
+        title: 'Geolocation',
+        url: '/geolocation',
         iosIcon: mailOutline,
         mdIcon: mailSharp
       },
       {
-        title: 'Outbox',
-        url: '/folder/Outbox',
+        title: 'Device Info',
+        url: '/device_info',
         iosIcon: paperPlaneOutline,
         mdIcon: paperPlaneSharp
       },
       {
-        title: 'Favorites',
-        url: '/folder/Favorites',
+        title: 'Vibrador',
+        url: '/vibrator',
         iosIcon: heartOutline,
         mdIcon: heartSharp
       },
       {
-        title: 'Archived',
-        url: '/folder/Archived',
+        title: 'Share api',
+        url: '/share_api',
         iosIcon: archiveOutline,
         mdIcon: archiveSharp
       },
       {
-        title: 'Trash',
-        url: '/folder/Trash',
+        title: 'Notifications',
+        url: '/notifications',
         iosIcon: trashOutline,
         mdIcon: trashSharp
       },
       {
-        title: 'Spam',
-        url: '/folder/Spam',
+        title: 'Camera',
+        url: '/camera',
         iosIcon: warningOutline,
         mdIcon: warningSharp
       }
