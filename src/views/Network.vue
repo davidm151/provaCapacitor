@@ -5,40 +5,39 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Geolocation</ion-title>
+        <ion-title>Network Info</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Geolocation</ion-title>
+          <ion-title size="large">Network Info</ion-title>
         </ion-toolbar>
       </ion-header>
-      <h1>Geolocation</h1>
-      <p>Your location is:</p>
-      <p>Latitude: {{loc?.coords.latitude}}</p>
-      <p>Longitude: {{loc?.coords.longitude}}</p>
+      <h1>Network Info</h1>
+      <p>Connected: {{loc?.connected}}</p>
+      <p>Connection Type: {{loc?.connectionType}}</p>
 
-      <button @click="getCurrentPosition">
-        Get Current Location
+      <button @click="networkInfo">
+        Network Info
       </button>
     </ion-content>
   </ion-page>
 </template>
 <script>
 import {Plugins} from "@capacitor/core";
-const { Geolocation: geo } = Plugins;
+const { Network } = Plugins;
 export default{
   name: 'Geolocaton',
   data () {
     return{
-      loc: null
+      status: null
     }
   },
   methods:{
-    async getCurrentPosition(){
-      this.loc = await geo.getCurrentPosition()
-    }
+    async networkInfo() {
+      this.status = await Network.getStatus();
+    },
   }
 }
 </script>

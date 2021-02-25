@@ -90,6 +90,12 @@ export default defineComponent({
         url: '/camera',
         iosIcon: warningOutline,
         mdIcon: warningSharp
+      },
+      {
+        title: 'Network Info',
+        url: '/network_info',
+        iosIcon: warningOutline,
+        mdIcon: warningSharp
       }
     ];
     const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
