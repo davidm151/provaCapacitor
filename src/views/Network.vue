@@ -17,7 +17,6 @@
       <h1>Network Info</h1>
       <p>Connected: {{status?.connected}}</p>
       <p>Connection Type: {{status?.connectionType}}</p>
-
       <button @click="networkInfo">
         Network Info
       </button>

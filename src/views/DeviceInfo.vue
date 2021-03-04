@@ -5,41 +5,60 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }}</ion-title>
+        <ion-title>Device Info</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">{{ $route.params.id }}</ion-title>
+          <ion-title size="large">Device Info</ion-title>
         </ion-toolbar>
       </ion-header>
+      <h1>Device Info</h1>
+      <button @click="networkInfo">
 
-      <div id="container">
-        <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      </button>
+      <button @click="DeviceInfo">
+        Network Info2
+      </button>
     </ion-content>
   </ion-page>
 </template>
-
-<script lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-export default {
-  name: 'Folder',
-  components: {
-    IonButtons,
-    IonContent,
-    IonHeader,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar
+<script>
+import {Plugins} from "@capacitor/core";
+const { Device } = Plugins;
+const { Network } = Plugins;
+export default{
+  name: 'Geolocaton',
+  data () {
+    return{
+      status: null,
+      diskFree: null,
+      diskTotal: null,
+      memUsed: null,
+      operatingSystem: null,
+      battery: null,
+      isCharging: null
+    }
+  },
+  methods:{
+    async DeviceInfo() {
+      const info = await Device.getInfo();
+      const info2 = await Device.getBatteryInfo();
+      this.diskFree=info.diskFree;
+      this.diskTotal=info.diskTotal;
+      this.memUsed=info.memUsed;
+      this.operatingSystem=info.operatingSystem;
+      this.battery=info2.batteryLevel;
+      this.isCharging=info2.isCharging;
+      console.log(info);
+    },
+    async networkInfo() {
+      this.status = await Network.getStatus();
+    },
   }
 }
 </script>
-
 <style scoped>
 #container {
   text-align: center;
