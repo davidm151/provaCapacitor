@@ -14,15 +14,15 @@
           <ion-title size="large">Device Info</ion-title>
         </ion-toolbar>
       </ion-header>
-      <div @click="DeviceInfo">
+      <button @click="DeviceInfo">
       <h1>Device Info</h1>
         <p>Battery: {{battery}}</p>
         <p> Is charging: {{ isCharging }}</p>
-        <p>Disk Free: {{ diskFree}}</p>
-        <p>Disk Total:  {{ diskTotal}}</p>
-        <p>Mem Used: {{ memUsed}}</p>
-        <p>Operating System: {{ operatingSystem}}</p>
-      </div>
+        <p>Disk Free: {{ diskFree }}</p>
+        <p>Disk Total:  {{ diskTotal }}</p>
+        <p>Mem Used: {{ memUsed }}</p>
+        <p>Operating System: {{ operatingSystem }}</p>
+      </button>
       <div @click="networkInfo">
         <h1>Network Info</h1>
         <p>Connected: {{ connected }}</p>

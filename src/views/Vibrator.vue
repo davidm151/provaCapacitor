@@ -6,8 +6,9 @@
 </template>
 
 <script>
-import {Plugins,   HapticsImpactStyle} from "@capacitor/core";
-const { Haptics } = Plugins;
+import {Plugins} from "@capacitor/core";
+import { Vibration } from '@ionic-native/vibration/ngx';
+const { Vibrate} = Vibration;
 export default{
   name: 'Geolocaton',
   data () {
@@ -17,7 +18,7 @@ export default{
   },
   methods:{
     hapticsVibrate() {
-      Haptics.vibrate();
+      Vibrate.vibrate;
     }
   }
 }
