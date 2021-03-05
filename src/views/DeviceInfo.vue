@@ -14,10 +14,20 @@
           <ion-title size="large">Device Info</ion-title>
         </ion-toolbar>
       </ion-header>
+      <div @click="DeviceInfo">
       <h1>Device Info</h1>
-      <button @click="networkInfo">
-
-      </button>
+        <p>Battery: {{battery}}</p>
+        <p> Is charging: {{ isCharging }}</p>
+        <p>Disk Free: {{ diskFree}}</p>
+        <p>Disk Total:  {{ diskTotal}}</p>
+        <p>Mem Used: {{ memUsed}}</p>
+        <p>Operating System: {{ operatingSystem}}</p>
+      </div>
+      <div @click="networkInfo">
+        <h1>Network Info</h1>
+        <p>Connected: {{ connected }}</p>
+        <p>Connection Type: {{ connectionType }}</p>
+      </div>
       <button @click="DeviceInfo">
         Network Info2
       </button>
@@ -38,7 +48,9 @@ export default{
       memUsed: null,
       operatingSystem: null,
       battery: null,
-      isCharging: null
+      isCharging: null,
+      connected: null,
+      connectionType: null
     }
   },
   methods:{
@@ -55,7 +67,9 @@ export default{
     },
     async networkInfo() {
       this.status = await Network.getStatus();
-    },
+      this.connected=this.status.connected;
+      this.connectionType=this.status.connectionType;
+      },
   }
 }
 </script>
