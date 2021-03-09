@@ -10,7 +10,7 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <h1>Device Info</h1>
-      <p>Battery: {{battery * 100}}."%"</p>
+      <p>Battery: {{battery * 100 + "%"}}</p>
       <p> Is charging: {{ isCharging }}</p>
       <p>Disk Free: {{ diskFree }}</p>
       <p>Disk Total:  {{ diskTotal }}</p>
