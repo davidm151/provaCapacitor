@@ -6,6 +6,10 @@
 </template>
 
 <script>
+import {
+  Plugins
+} from '@capacitor/core';
+const { Haptics } = Plugins;
 export default{
   name: 'Geolocaton',
   data () {
@@ -16,7 +20,7 @@ export default{
   methods:{
 
     hapticsVibrate() {
-      navigator.vibrate(200);
+     Haptics.vibrate(200);
     }
 
   }
