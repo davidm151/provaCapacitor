@@ -92,8 +92,8 @@ export default defineComponent({
         mdIcon: warningSharp
       },
       {
-        title: 'Network Info',
-        url: '/network_info',
+        title: 'Toast',
+        url: '/toast',
         iosIcon: warningOutline,
         mdIcon: warningSharp
       }

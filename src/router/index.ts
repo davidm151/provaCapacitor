@@ -31,8 +31,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/Camera.vue')
   },
   {
-    path: '/network_info',
-    component: () => import ('../views/Network.vue')
+    path: '/toast',
+    component: () => import ('../views/Toast.vue')
   }
 ]
 

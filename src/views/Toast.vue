@@ -5,38 +5,31 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Network Info</ion-title>
+        <ion-title>Toast</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Network Info</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <h1>Network Info</h1>
-      <p>Connected: {{status?.connected}}</p>
-      <p>Connection Type: {{status?.connectionType}}</p>
-      <button @click="networkInfo">
-        Network Info
-      </button>
+      <button @click="show"></button>
     </ion-content>
   </ion-page>
 </template>
 <script>
 import {Plugins} from "@capacitor/core";
-const { Network } = Plugins;
+const { Toast } = Plugins;
+
 export default{
-  name: 'Geolocaton',
+  name: 'Toast',
   data () {
     return{
       status: null
     }
   },
   methods:{
-    async networkInfo() {
-      this.status = await Network.getStatus();
-    },
+    async show() {
+      await Toast.show({
+        text: 'Hello!'
+      });
+    }
   }
 }
 </script>
