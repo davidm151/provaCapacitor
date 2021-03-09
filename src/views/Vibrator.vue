@@ -16,7 +16,7 @@ export default{
   methods:{
 
     hapticsVibrate() {
-     navigator.vibrate();
+      window.navigator.vibrate(200);
     }
 
   }
