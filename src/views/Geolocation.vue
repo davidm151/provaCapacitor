@@ -9,27 +9,31 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Geolocation</ion-title>
-        </ion-toolbar>
-      </ion-header>
       <h1>Geolocation</h1>
       <p>Your location is:</p>
       <p>Latitude: {{loc?.coords.latitude}}</p>
       <p>Longitude: {{loc?.coords.longitude}}</p>
-
       <button @click="getCurrentPosition">
         Get Current Location
       </button>
     </ion-content>
   </ion-page>
 </template>
-<script>
+<script >
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import {Plugins} from "@capacitor/core";
 const { Geolocation: geo } = Plugins;
-export default{
+export default {
   name: 'Geolocaton',
+  components: {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+  },
   data () {
     return{
       loc: null
@@ -42,6 +46,7 @@ export default{
   }
 }
 </script>
+
 <style scoped>
 #container {
   text-align: center;

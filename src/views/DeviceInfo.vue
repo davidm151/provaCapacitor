@@ -9,37 +9,40 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Device Info</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <button @click="DeviceInfo">
       <h1>Device Info</h1>
-        <p>Battery: {{battery}}</p>
-        <p> Is charging: {{ isCharging }}</p>
-        <p>Disk Free: {{ diskFree }}</p>
-        <p>Disk Total:  {{ diskTotal }}</p>
-        <p>Mem Used: {{ memUsed }}</p>
-        <p>Operating System: {{ operatingSystem }}</p>
-      </button>
-      <div @click="networkInfo">
-        <h1>Network Info</h1>
-        <p>Connected: {{ connected }}</p>
-        <p>Connection Type: {{ connectionType }}</p>
-      </div>
-      <button @click="DeviceInfo">
-        Network Info2
-      </button>
+      <p>Battery: {{battery}}</p>
+      <p> Is charging: {{ isCharging }}</p>
+      <p>Disk Free: {{ diskFree }}</p>
+      <p>Disk Total:  {{ diskTotal }}</p>
+      <p>Mem Used: {{ memUsed }}</p>
+      <p>Operating System: {{ operatingSystem }}</p>
+      <p>Platform: {{ platform }}</p>
+      <p>Model: {{ model }}</p>
+      <p>Manufacturer: {{ manufacturer }}</p>
+      <button @click="DeviceInfo">Device Info</button>
+      <h1>Network Info</h1>
+      <p>Connected: {{ connected }}</p>
+      <p>Connection Type: {{ connectionType }}</p>
+      <button @click="networkInfo">Network Info</button>
     </ion-content>
   </ion-page>
 </template>
-<script>
+<script >
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import {Plugins} from "@capacitor/core";
 const { Device } = Plugins;
 const { Network } = Plugins;
-export default{
-  name: 'Geolocaton',
+export default {
+  name: 'DeviceInfo',
+  components: {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+  },
   data () {
     return{
       status: null,
@@ -50,7 +53,10 @@ export default{
       battery: null,
       isCharging: null,
       connected: null,
-      connectionType: null
+      connectionType: null,
+      platform:null,
+      model:null,
+      manufacturer: null
     }
   },
   methods:{
@@ -59,6 +65,9 @@ export default{
       const info2 = await Device.getBatteryInfo();
       this.diskFree=info.diskFree;
       this.diskTotal=info.diskTotal;
+      this.model=info.model;
+      this.manufacturer=info.manufacturer;
+      this.platform=info.platform;
       this.memUsed=info.memUsed;
       this.operatingSystem=info.operatingSystem;
       this.battery=info2.batteryLevel;
@@ -69,10 +78,11 @@ export default{
       this.status = await Network.getStatus();
       this.connected=this.status.connected;
       this.connectionType=this.status.connectionType;
-      },
+    },
   }
 }
 </script>
+
 <style scoped>
 #container {
   text-align: center;
