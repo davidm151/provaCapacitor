@@ -92,6 +92,12 @@ export default defineComponent({
         mdIcon: warningSharp
       },
       {
+        title: 'Motion',
+        url: '/motion',
+        iosIcon: warningOutline,
+        mdIcon: warningSharp
+      },
+      {
         title: 'Toast',
         url: '/toast',
         iosIcon: warningOutline,

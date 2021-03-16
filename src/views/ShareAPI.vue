@@ -5,29 +5,25 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }}</ion-title>
+        <ion-title>Share API</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">{{ $route.params.id }}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <h1>Share API</h1>
+      <button @click="hapticsVibrate">
+        Share
+      </button>
     </ion-content>
   </ion-page>
 </template>
-
-<script lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+<script >
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar  } from '@ionic/vue';
+import {
+  Plugins
+} from '@capacitor/core';
+const { Share } = Plugins;
 export default {
-  name: 'Folder',
+  name: 'Vibrator',
   components: {
     IonButtons,
     IonContent,
@@ -36,6 +32,15 @@ export default {
     IonPage,
     IonTitle,
     IonToolbar
+  },  methods: {
+    async hapticsVibrate() {
+      await Share.share({
+        title: 'See cool stuff',
+        text: 'Really awesome thing you need to see right meow',
+        url: 'http://ionicframework.com/',
+        dialogTitle: 'Share with buddies'
+      });
+    }
   }
 }
 </script>

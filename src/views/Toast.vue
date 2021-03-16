@@ -13,26 +13,38 @@
     </ion-content>
   </ion-page>
 </template>
-<script>
-import {Plugins} from "@capacitor/core";
+<script >
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {Plugins} from '@capacitor/core';
 const { Toast } = Plugins;
-
-export default{
+export default {
   name: 'Toast',
+  components: {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+  },
   data () {
     return{
-      status: null
+      loc: null
     }
   },
   methods:{
     async show() {
       await Toast.show({
-        text: 'Hello!'
+        text: 'Hello!',
+        duration: "short",
+        position: "center"
       });
     }
   }
 }
 </script>
+
 <style scoped>
 #container {
   text-align: center;

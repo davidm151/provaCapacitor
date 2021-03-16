@@ -18,6 +18,10 @@
 </template>
 <script >
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar  } from '@ionic/vue';
+import {
+  Plugins
+} from '@capacitor/core';
+const { Haptics } = Plugins;
 export default {
   name: 'Vibrator',
   components: {
@@ -30,7 +34,7 @@ export default {
     IonToolbar
   },  methods: {
     hapticsVibrate() {
-      window.navigator.vibrate(200);
+      Haptics.vibrate();
     }
   }
 }

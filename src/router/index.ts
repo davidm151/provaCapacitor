@@ -27,6 +27,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/Notifications.vue')
   },
   {
+    path: '/motion',
+    component: () => import ('../views/Motion.vue')
+  },
+  {
     path: '/camera',
     component: () => import ('../views/Camera.vue')
   },
