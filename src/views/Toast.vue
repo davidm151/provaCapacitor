@@ -36,7 +36,7 @@ export default {
   methods:{
     async show() {
       await Toast.show({
-        text: 'Hello!',
+        text: 'Hola!!!',
         duration: "short",
         position: "center"
       });

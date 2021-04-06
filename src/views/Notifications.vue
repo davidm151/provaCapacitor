@@ -10,7 +10,7 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <h1>Notificacions</h1>
-      <button @click="hapticsVibrate">
+      <button @click="notificacio">
         Notificacions
       </button>
     </ion-content>
@@ -23,7 +23,7 @@ import {
 } from '@capacitor/core';
 const { LocalNotifications } = Plugins;
 export default {
-  name: 'Vibrator',
+  name: 'Notificacio',
   components: {
     IonButtons,
     IonContent,
@@ -33,12 +33,12 @@ export default {
     IonTitle,
     IonToolbar
   },  methods: {
-    async hapticsVibrate() {
+    async notificacio() {
       await LocalNotifications.schedule({
         notifications: [
           {
-            title: "Title",
-            body: "Body",
+            title: "Notificacio",
+            body: "Notificacio de prova!",
             id: 1,
             schedule: { at: new Date(Date.now() + 1000 * 5) },
             sound: null,

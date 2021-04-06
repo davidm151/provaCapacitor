@@ -10,7 +10,7 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <h1>Share API</h1>
-      <button @click="hapticsVibrate">
+      <button @click="share">
         Share
       </button>
     </ion-content>
@@ -23,7 +23,7 @@ import {
 } from '@capacitor/core';
 const { Share } = Plugins;
 export default {
-  name: 'Vibrator',
+  name: 'Share API',
   components: {
     IonButtons,
     IonContent,
@@ -33,7 +33,7 @@ export default {
     IonTitle,
     IonToolbar
   },  methods: {
-    async hapticsVibrate() {
+    async share() {
       await Share.share({
         title: 'See cool stuff',
         text: 'Really awesome thing you need to see right meow',
