@@ -5,37 +5,54 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }}</ion-title>
+        <ion-title>Photo Gallery</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">{{ $route.params.id }}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <h1>Camera</h1>
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button @click="takePhoto()">
+          <ion-icon :icon="camera"></ion-icon>
+        </ion-fab-button>
+        <ion-tab-button tab="tab2">
+          <ion-icon :icon="images" />
+          <ion-label>Photos</ion-label>
+        </ion-tab-button>
+      </ion-fab>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" :key="photo" v-for="photo in photos">
+            <ion-img :src="photo.webviewPath"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-export default {
-  name: 'Folder',
-  components: {
-    IonButtons,
-    IonContent,
-    IonHeader,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar
+<script >
+import { camera, trash, close } from 'ionicons/icons';
+import { images, square, triangle } from 'ionicons/icons';
+import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon,
+  IonToolbar, IonTitle, IonContent, IonGrid, IonRow,
+  IonCol, IonImg } from '@ionic/vue';
+import { ref, onMounted, watch } from 'vue';
+import { Plugins, CameraResultType, CameraSource, CameraPhoto,
+  Capacitor, FilesystemDirectory } from "@capacitor/core";
+import { usePhotoGallery, Photo } from '@/composables/usePhotoGallery';
+export default  {
+  name: 'Tab2',
+  components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon,
+    IonToolbar, IonTitle, IonContent,IonGrid, IonRow,
+    IonCol },
+  setup() {
+    const { photos, takePhoto } = usePhotoGallery();
+
+    return {
+      photos,
+      takePhoto,
+      camera, trash, close
+    }
   }
 }
 </script>
